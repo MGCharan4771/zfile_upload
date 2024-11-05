@@ -1,0 +1,36 @@
+<mvc:View controllerName="zfileupload.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:u="sap.ui.unified">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <u:FileUploader
+			id="fileUploader"
+			name="myFileUpload"
+            useMultipart="false"
+			uploadUrl="/sap/opu/odata/sap/ZIMAGE_PRO_SRV/imageSet"
+			tooltip="Upload your file to the local server"
+			uploadComplete="handleUploadComplete"/>
+		    <Button
+			text="Upload File"
+			press="handleUploadPress"/>
+            <Table id="idTable" items="{/imageSet}" inset="true" >
+                <columns>
+                    <Column >
+                        <Text text="File Name"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="Mime Type"></Text>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem >
+                        <cells>
+                            <Link text="{Filename}" press="showImage"></Link>
+                            <Text text="{Mimetype}"></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
